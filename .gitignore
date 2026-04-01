@@ -25,4 +25,4 @@ Thumbs.db
 npm-debug.log*
 
 # ia
-.claude
+.claude/
