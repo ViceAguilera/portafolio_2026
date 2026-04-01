@@ -1,0 +1,20 @@
+/* ── Base ── */
+@import './base/reset.css';
+@import './base/variables.css';
+@import './base/typography.css';
+@import './base/global.css';
+
+/* ── Utilities ── */
+@import './utils/animations.css';
+
+/* ── Components ── */
+/* @import './components/button.css'; */
+/* @import './components/card.css'; */
+/* @import './components/header.css'; */
+
+/* ── Sections ── */
+/* @import './sections/hero.css'; */
+/* @import './sections/about.css'; */
+/* @import './sections/projects.css'; */
+/* @import './sections/skills.css'; */
+/* @import './sections/contact.css'; */
