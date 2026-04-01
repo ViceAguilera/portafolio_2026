@@ -1,7 +1,18 @@
+import Silk from '@components/Silk';
+
 function Hero() {
   return (
-    <section id="hero" className="hero">
-      <div className="container hero__content">
+    <section id="hero" className="hero" style={{ position: 'relative', minHeight: '100dvh', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        <Silk
+          speed={5}
+          scale={1}
+          color="#2563eb"
+          noiseIntensity={1.5}
+          rotation={0}
+        />
+      </div>
+      <div className="container hero__content" style={{ position: 'relative', zIndex: 1 }}>
         <p className="hero__greeting">Hola, soy</p>
         <h1 className="hero__name">Tu Nombre</h1>
         <p className="hero__role">Desarrollador Web</p>

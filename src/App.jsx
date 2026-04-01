@@ -1,24 +1,16 @@
-import Header from '@components/Header';
-import Hero from '@sections/Hero';
-import About from '@sections/About';
-import Projects from '@sections/Projects';
-import Skills from '@sections/Skills';
-import Contact from '@sections/Contact';
-import Footer from '@components/Footer';
+import Silk from '@components/Silk';
 
 function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <div style={{ position: 'fixed', inset: 0 }}>
+      <Silk
+        speed={5}
+        scale={1}
+        color="#2563eb"
+        noiseIntensity={1.5}
+        rotation={0}
+      />
+    </div>
   );
 }
 

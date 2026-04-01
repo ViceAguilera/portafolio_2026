@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 import { resolve } from 'path';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   root: '.',
   publicDir: 'public',
 
@@ -21,7 +22,7 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     minify: 'oxc',
-    cssMinify: 'lightningcss',
+    cssMinify: true,
     rollupOptions: {
       input: resolve(__dirname, 'index.html'),
       output: {
