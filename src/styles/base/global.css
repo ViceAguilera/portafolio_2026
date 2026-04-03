@@ -10,7 +10,7 @@ body {
 }
 
 section {
-  padding-block: var(--space-section);
+  padding-block: var(--space-lg);
 }
 
 .sr-only {
