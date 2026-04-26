@@ -103,6 +103,136 @@
   margin-bottom: 0.8rem;
 }
 
+.cv-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  pointer-events: auto;
+}
+
+.cv-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.2rem;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  border: 2px solid;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  isolation: isolate;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cv-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(120deg, #ef4444, #f59e0b, #22c55e, #3b82f6, #a855f7);
+  background-size: 300% 300%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: rainbow-shift 4s linear infinite;
+}
+
+.cv-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.cv-btn:hover::before {
+  opacity: 1;
+}
+
+.cv-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.cv-btn:hover svg {
+  transform: rotate(-8deg) scale(1.15);
+}
+
+@keyframes rainbow-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.theme-dark .cv-btn {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e4e4e7;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.theme-light .cv-btn {
+  background: rgba(255, 255, 255, 0.35);
+  color: #0f0f1a;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+/* ── CV modal ── */
+.cv-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  pointer-events: auto;
+}
+
+.cv-modal__inner {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 90vh;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.cv-modal__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cv-modal__close:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.cv-modal__frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
 .cursor {
   animation: blink 1s step-end infinite;
 }
@@ -173,12 +303,114 @@
   align-items: center;
   gap: 0.6rem;
   font-size: 1.05rem;
+  pointer-events: auto;
+}
+
+.links-list li:hover .link-icon,
+.links-list li:hover .link-meta {
+  animation: rainbow 1.5s linear infinite;
 }
 
 .link-icon {
   flex-shrink: 0;
+  transition: color 0.2s ease;
 }
 
 .link-meta {
   font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .content {
+    padding: 2rem 1.5rem;
+    justify-content: flex-start;
+    padding-top: 4rem;
+  }
+
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .bio {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .section-title {
+    font-size: 1.05rem;
+  }
+
+  .list li,
+  .desc,
+  .links-list li {
+    font-size: 0.88rem;
+  }
+
+  .link-meta {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cv-modal {
+    padding: 1rem;
+  }
+
+  .cv-modal__inner {
+    height: 92vh;
+  }
+
+  .cv-btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1.5rem 1rem;
+    padding-top: 3.5rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .bio {
+    font-size: 0.82rem;
+  }
+
+  .section-title {
+    font-size: 0.95rem;
+  }
+
+  .list li,
+  .desc,
+  .links-list li {
+    font-size: 0.8rem;
+  }
+
+  .link-meta {
+    font-size: 0.75rem;
+  }
+
+  .links-list li {
+    gap: 0.4rem;
+  }
+
+  .link-icon svg,
+  .link-icon {
+    width: 14px;
+    height: 14px;
+  }
 }
