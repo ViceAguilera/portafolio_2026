@@ -68,15 +68,15 @@
 }
 
 /* ── Dark theme colors ── */
-.theme-dark .content { color: #d4d4d8; }
-.theme-dark .title { color: #e4e4e7; }
-.theme-dark .bio { color: #a1a1aa; }
-.theme-dark .section-title { color: #d4d4d8; }
-.theme-dark .list li { color: #a1a1aa; }
-.theme-dark .desc { color: #71717a; }
-.theme-dark .link-icon { color: #a1a1aa; }
-.theme-dark .link-meta { color: #52525b; }
-.theme-dark .link { color: #60a5fa; }
+.theme-dark .content { color: #e4e4e7; }
+.theme-dark .title { color: #f4f4f5; }
+.theme-dark .bio { color: #d4d4d8; }
+.theme-dark .section-title { color: #e4e4e7; }
+.theme-dark .list li { color: #d4d4d8; }
+.theme-dark .desc { color: #a1a1aa; }
+.theme-dark .link-icon { color: #d4d4d8; }
+.theme-dark .link-meta { color: #71717a; }
+.theme-dark .link { color: #93c5fd; }
 
 /* ── Light theme colors ── */
 .theme-light .content { color: #1a1a2e; }
