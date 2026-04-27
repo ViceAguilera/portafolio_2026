@@ -6,7 +6,7 @@ WORKDIR /app
 
 FROM base AS deps
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install --prefer-offline
 
 FROM deps AS dev
 ENV NODE_ENV=development
