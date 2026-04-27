@@ -1,39 +1,30 @@
-# syntax=docker/dockerfile:1.6
+# syntax=docker/dockerfile:1.7
 
-# ──────────────────────────────────────────────
-# Base con dependencias
-# ──────────────────────────────────────────────
-FROM node:20-alpine AS deps
+FROM node:20-alpine AS base
+RUN apk add --no-cache git
 WORKDIR /app
-COPY package*.json ./
+
+FROM base AS deps
+COPY package.json package-lock.json ./
 RUN npm ci
 
-# ──────────────────────────────────────────────
-# Stage de desarrollo (Vite + hot reload)
-# ──────────────────────────────────────────────
-FROM node:20-alpine AS dev
-WORKDIR /app
+FROM deps AS dev
 ENV NODE_ENV=development
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 EXPOSE 9666
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "9666"]
 
-# ──────────────────────────────────────────────
-# Stage de build de produccion
-# ──────────────────────────────────────────────
-FROM node:20-alpine AS build
-WORKDIR /app
+FROM deps AS build
 ENV NODE_ENV=production
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
-# ──────────────────────────────────────────────
-# Stage de produccion (Nginx sirviendo dist/)
-# ──────────────────────────────────────────────
 FROM nginx:1.27-alpine AS prod
-COPY docker/nginx/portfolio.conf /etc/nginx/conf.d/default.conf
+RUN mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled
+COPY docker/nginx/portfolio.conf /etc/nginx/sites-available/portfolio.conf
+RUN rm -f /etc/nginx/conf.d/default.conf \
+  && ln -sf /etc/nginx/sites-available/portfolio.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 CMD wget -q -O /dev/null http://127.0.0.1/healthz || exit 1
 CMD ["nginx", "-g", "daemon off;"]
