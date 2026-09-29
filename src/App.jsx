@@ -1,8 +1,9 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Mail, Sun, Moon, FileText, Download, X } from 'lucide-react';
-import { bio, projects, experience, stack } from './content';
+import { bio, projects, stack } from './content';
 import { useMotion } from './motion';
-import { techIcon } from './techIcons';
+import TechChip from './TechChip';
+import { ExperienceTimeline, ExperienceTabs } from './Experience';
 import './App.css';
 
 // Los fondos WebGL (three/ogl) pesan ~1 MB: se cargan aparte para que el texto pinte primero
@@ -116,16 +117,15 @@ function App() {
           </div>
         </section>
 
+        {/* Propuestas de experiencia: quedarse con una y borrar la otra (y su CSS en App.css) */}
         <section className="section">
-          <h2 className="section-title">Experiencia:</h2>
-          <ul className="list">
-            {experience.map((e) => (
-              <li key={e.org}>
-                <strong>{e.role}</strong> · {e.org}
-                <span className="desc"> » {e.period}{e.note && ` · ${e.note}`}</span>
-              </li>
-            ))}
-          </ul>
+          <h2 className="section-title">Experiencia: <span className="xp-option">opción A · línea de tiempo</span></h2>
+          <ExperienceTimeline />
+        </section>
+
+        <section className="section">
+          <h2 className="section-title">Experiencia: <span className="xp-option">opción B · pestañas</span></h2>
+          <ExperienceTabs />
         </section>
 
         <section className="section">
@@ -135,23 +135,7 @@ function App() {
               <div key={s.group} className="stack__card">
                 <h3 className="stack__group">{s.group}</h3>
                 <ul className="chips">
-                  {s.items.map((name) => {
-                    const icon = techIcon(name);
-                    return (
-                      <li
-                        key={name}
-                        className={icon?.dark ? 'chip chip--dark-brand' : 'chip'}
-                        style={icon ? { '--brand': icon.color } : undefined}
-                      >
-                        {icon && (
-                          <svg viewBox="0 0 24 24" className="chip__icon" aria-hidden="true">
-                            <path d={icon.path} />
-                          </svg>
-                        )}
-                        {name}
-                      </li>
-                    );
-                  })}
+                  {s.items.map((name) => <TechChip key={name} name={name} />)}
                 </ul>
               </div>
             ))}

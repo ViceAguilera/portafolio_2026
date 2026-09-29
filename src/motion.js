@@ -86,6 +86,8 @@ export function useMotion(rootRef, dialogRef) {
         cleanups.push(revealOnEnter(section, '.project', { y: 48, scale: 0.97 }, { delay: 120, step: 110 }));
         cleanups.push(revealOnEnter(section, '.tags li', { scale: 0.6 }, { delay: 450, step: 30 }));
         cleanups.push(revealOnEnter(section, '.list li, .links-list li', { x: -20 }, { delay: 100 }));
+        cleanups.push(revealOnEnter(section, '.tl__item', { x: -28 }, { delay: 100, step: 120 }));
+        cleanups.push(revealOnEnter(section, '.xp-tabs', { y: 24 }, { delay: 100 }));
         cleanups.push(revealOnEnter(section, '.stack__card', { y: 32 }, { delay: 100, step: 80 }));
         cleanups.push(revealOnEnter(section, '.chip', { y: 10, scale: 0.8 }, { delay: 350, step: 18 }));
       });

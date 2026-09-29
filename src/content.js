@@ -42,16 +42,44 @@ export const experience = [
     role: 'Cofundador, Product Owner y desarrollador',
     org: 'Nexus One',
     period: 'Abr 2026 – hoy',
+    current: true,
     note: 'ObraSuite, Prioro, MochiGo, Prioro Food y TiroLab',
+    highlights: [
+      'Dirijo un portafolio de cinco productos con un equipo de cuatro personas, desde el levantamiento con clientes hasta producción.',
+      'Endurecí la autorización de un backend Rails multi-tenant en cuatro revisiones de seguridad, cada corrección con su spec de regresión.',
+      'Construí el cliente web de MochiGo (React 19 + Vite, PWA) con control de rol por ruta y contraste AA en ambos temas.',
+      'Reviso e integro los PR del equipo (54 merges) con CI endurecido: suite verde, Packwerk en cero y contrato OpenAPI al día.',
+    ],
+    tags: ['Ruby on Rails', 'React', 'PostgreSQL', 'Docker'],
   },
   {
     role: 'Desarrollador de software',
     org: 'Gatblac',
     period: 'Abr 2024 – Jul 2026',
-    note: 'Banca: BICE, BCI y sistemas tributarios de NUAM usados por 27 corredoras',
+    note: 'Banca: BICE, BCI y NUAM',
+    highlights: [
+      'Desarrollé el frontend en Angular de la activación de servicios digitales del Banco BICE.',
+      'Migré sus microservicios a Java 21 y cerré vulnerabilidades de sus APIs de autenticación antes del paso a producción.',
+      'Mantuve Sebra y Optimus (NUAM), usados por 27 corredoras de bolsa para declarar ante el SII.',
+    ],
+    tags: ['Angular', 'Java', 'Spring Boot', 'SQL Server'],
   },
-  { role: 'Ayudante universitario', org: 'Universidad del Bío-Bío', period: 'Mar 2023 – Ene 2024', note: null },
-  { role: 'Practicante Digital Experience', org: 'NTT DATA', period: 'Ene – Mar 2023', note: 'Realidad aumentada para Movistar' },
+  {
+    role: 'Ayudante universitario',
+    org: 'Universidad del Bío-Bío',
+    period: 'Mar 2023 – Ene 2024',
+    note: null,
+    highlights: ['Product Owner entre la docente y los equipos del ramo, con soporte en código y SQL.'],
+    tags: ['SQL'],
+  },
+  {
+    role: 'Practicante Digital Experience',
+    org: 'NTT DATA',
+    period: 'Ene – Mar 2023',
+    note: 'Realidad aumentada para Movistar',
+    highlights: ['Desarrollé experiencias de realidad aumentada para un evento corporativo de Movistar.'],
+    tags: ['AR/VR'],
+  },
 ];
 
 export const stack = [
