@@ -1,9 +1,14 @@
 @font-face {
   font-family: 'Type Machine';
-  src: url('/font/Type Machine.ttf') format('truetype');
+  src: url('/font/type-machine.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+
+/* Evita el destello blanco al hacer overscroll en modo oscuro */
+html[data-theme='dark'] body {
+  background-color: #000;
 }
 
 .background {
@@ -182,22 +187,24 @@
 
 /* ── CV modal ── */
 .cv-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  height: 90vh;
+  margin: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.cv-modal::backdrop {
   background: rgba(0, 0, 0, 0.7);
-  padding: 2rem;
-  pointer-events: auto;
 }
 
 .cv-modal__inner {
   position: relative;
   width: 100%;
-  max-width: 900px;
-  height: 90vh;
+  height: 100%;
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
@@ -233,8 +240,10 @@
   display: block;
 }
 
-.cursor {
-  animation: blink 1s step-end infinite;
+@media (prefers-reduced-motion: no-preference) {
+  .cursor {
+    animation: blink 1s step-end infinite;
+  }
 }
 
 @keyframes blink {
@@ -268,6 +277,9 @@
 .link {
   text-decoration: none;
   display: inline-block;
+  /* Zona táctil >= 24px (WCAG 2.5.8) sin alterar el espaciado de las listas */
+  padding-block: 0.25rem;
+  margin-block: -0.25rem;
   transition: color 0.2s ease, transform 0.2s ease;
   pointer-events: auto;
 }
@@ -362,14 +374,6 @@
 }
 
 @media (max-width: 768px) {
-  .cv-modal {
-    padding: 1rem;
-  }
-
-  .cv-modal__inner {
-    height: 92vh;
-  }
-
   .cv-btn {
     font-size: 0.85rem;
     padding: 0.4rem 0.75rem;
