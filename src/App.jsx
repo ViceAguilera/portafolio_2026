@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Mail, Sun, Moon, FileText, Download, X } from 'lucide-react';
 import { bio, projects, experience, stack } from './content';
+import { useMotion } from './motion';
 import './App.css';
 
 // Los fondos WebGL (three/ogl) pesan ~1 MB: se cargan aparte para que el texto pinte primero
@@ -21,6 +22,8 @@ function initialDark() {
 function App() {
   const [dark, setDark] = useState(initialDark);
   const cvDialog = useRef(null);
+  const root = useRef(null);
+  useMotion(root, cvDialog);
 
   useEffect(() => {
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
@@ -37,7 +40,7 @@ function App() {
   }
 
   return (
-    <div className={dark ? 'theme-dark' : 'theme-light'}>
+    <div ref={root} className={dark ? 'theme-dark' : 'theme-light'}>
       <div className="background" aria-hidden="true">
         <Suspense fallback={null}>
           {dark ? (
@@ -72,7 +75,7 @@ function App() {
       </button>
 
       <main className="content">
-        <h1 className="title">Vicente Aguilera<span className="cursor" aria-hidden="true">_</span></h1>
+        <h1 className="title"><span className="title__name">Vicente Aguilera</span><span className="cursor" aria-hidden="true">_</span></h1>
 
         <div className="cv-actions">
           <button type="button" className="cv-btn" onClick={openCv}>
@@ -163,6 +166,7 @@ function App() {
         ref={cvDialog}
         className="cv-modal"
         aria-label="Currículum"
+        data-lenis-prevent
         onClick={(e) => e.target === cvDialog.current && cvDialog.current.close()}
       >
         <div className="cv-modal__inner">

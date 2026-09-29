@@ -338,9 +338,11 @@ html[data-theme='dark'] body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1rem;
+  perspective: 1000px;
 }
 
 .project {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -349,16 +351,45 @@ html[data-theme='dark'] body {
   border-radius: 12px;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  pointer-events: auto;
+  transition: border-color 0.2s ease;
+}
+
+/* Brillo que sigue al puntero; motion.js actualiza --mx / --my */
+.project::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), var(--glow), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: -1; /* backdrop-filter crea stacking context: queda sobre el fondo de la tarjeta, bajo el texto */
+}
+
+.project:hover::before {
+  opacity: 1;
 }
 
 .theme-dark .project {
+  --glow: rgba(147, 197, 253, 0.16);
   background: rgba(0, 0, 0, 0.45);
   border-color: rgba(255, 255, 255, 0.12);
 }
 
+.theme-dark .project:hover {
+  border-color: rgba(147, 197, 253, 0.45);
+}
+
 .theme-light .project {
+  --glow: rgba(29, 78, 216, 0.12);
   background: rgba(255, 255, 255, 0.5);
   border-color: rgba(0, 0, 0, 0.12);
+}
+
+.theme-light .project:hover {
+  border-color: rgba(29, 78, 216, 0.4);
 }
 
 .project__media {
