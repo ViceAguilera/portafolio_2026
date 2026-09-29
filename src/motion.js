@@ -86,11 +86,12 @@ export function useMotion(rootRef, dialogRef) {
         cleanups.push(revealOnEnter(section, '.project', { y: 48, scale: 0.97 }, { delay: 120, step: 110 }));
         cleanups.push(revealOnEnter(section, '.tags li', { scale: 0.6 }, { delay: 450, step: 30 }));
         cleanups.push(revealOnEnter(section, '.list li, .links-list li', { x: -20 }, { delay: 100 }));
-        cleanups.push(revealOnEnter(section, '.stack__row', { y: 14 }, { delay: 100, step: 50 }));
+        cleanups.push(revealOnEnter(section, '.stack__card', { y: 32 }, { delay: 100, step: 80 }));
+        cleanups.push(revealOnEnter(section, '.chip', { y: 10, scale: 0.8 }, { delay: 350, step: 18 }));
       });
 
       if (ctx.matches.finePointer) {
-        root.querySelectorAll('.project').forEach((card) => cleanups.push(tiltCard(card)));
+        root.querySelectorAll('.project, .stack__card').forEach((card) => cleanups.push(tiltCard(card)));
       }
     });
 

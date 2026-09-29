@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Mail, Sun, Moon, FileText, Download, X } from 'lucide-react';
 import { bio, projects, experience, stack } from './content';
 import { useMotion } from './motion';
+import { techIcon } from './techIcons';
 import './App.css';
 
 // Los fondos WebGL (three/ogl) pesan ~1 MB: se cargan aparte para que el texto pinte primero
@@ -129,14 +130,32 @@ function App() {
 
         <section className="section">
           <h2 className="section-title">Stack:</h2>
-          <dl className="stack">
+          <div className="stack">
             {stack.map((s) => (
-              <div key={s.group} className="stack__row">
-                <dt>{s.group}</dt>
-                <dd className="desc">{s.items.join(' · ')}</dd>
+              <div key={s.group} className="stack__card">
+                <h3 className="stack__group">{s.group}</h3>
+                <ul className="chips">
+                  {s.items.map((name) => {
+                    const icon = techIcon(name);
+                    return (
+                      <li
+                        key={name}
+                        className={icon?.dark ? 'chip chip--dark-brand' : 'chip'}
+                        style={icon ? { '--brand': icon.color } : undefined}
+                      >
+                        {icon && (
+                          <svg viewBox="0 0 24 24" className="chip__icon" aria-hidden="true">
+                            <path d={icon.path} />
+                          </svg>
+                        )}
+                        {name}
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             ))}
-          </dl>
+          </div>
         </section>
 
         <section className="section">

@@ -341,7 +341,8 @@ html[data-theme='dark'] body {
   perspective: 1000px;
 }
 
-.project {
+.project,
+.stack__card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -356,7 +357,8 @@ html[data-theme='dark'] body {
 }
 
 /* Brillo que sigue al puntero; motion.js actualiza --mx / --my */
-.project::before {
+.project::before,
+.stack__card::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -368,27 +370,32 @@ html[data-theme='dark'] body {
   z-index: -1; /* backdrop-filter crea stacking context: queda sobre el fondo de la tarjeta, bajo el texto */
 }
 
-.project:hover::before {
+.project:hover::before,
+.stack__card:hover::before {
   opacity: 1;
 }
 
-.theme-dark .project {
+.theme-dark .project,
+.theme-dark .stack__card {
   --glow: rgba(147, 197, 253, 0.16);
   background: rgba(0, 0, 0, 0.45);
   border-color: rgba(255, 255, 255, 0.12);
 }
 
-.theme-dark .project:hover {
+.theme-dark .project:hover,
+.theme-dark .stack__card:hover {
   border-color: rgba(147, 197, 253, 0.45);
 }
 
-.theme-light .project {
+.theme-light .project,
+.theme-light .stack__card {
   --glow: rgba(29, 78, 216, 0.12);
   background: rgba(255, 255, 255, 0.5);
   border-color: rgba(0, 0, 0, 0.12);
 }
 
-.theme-light .project:hover {
+.theme-light .project:hover,
+.theme-light .stack__card:hover {
   border-color: rgba(29, 78, 216, 0.4);
 }
 
@@ -447,21 +454,80 @@ html[data-theme='dark'] body {
 
 /* ── Stack ── */
 .stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  perspective: 1000px;
 }
 
-.stack__row {
+.stack__card {
+  gap: 0.75rem;
+}
+
+.stack__group {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.chips {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 0.75rem;
-  font-size: 1.05rem;
+  gap: 0.45rem;
 }
 
-.stack__row dt {
-  min-width: 8rem;
-  font-weight: 700;
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  /* translate (no transform): anime.js deja transform inline tras el revelado */
+  transition: translate 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.chip__icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  fill: currentColor;
+  transition: fill 0.15s ease;
+}
+
+.theme-dark .chip {
+  color: #d4d4d8;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.theme-light .chip {
+  color: #2d2d3f;
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
+/* Al pasar el mouse el logo toma su color de marca */
+.chip:hover {
+  translate: 0 -2px;
+  border-color: var(--brand, currentColor);
+  box-shadow: 0 6px 18px -6px var(--brand, transparent);
+}
+
+.chip:hover .chip__icon {
+  fill: var(--brand, currentColor);
+}
+
+/* Marcas casi negras: en modo oscuro el logo se queda con el color del texto */
+.theme-dark .chip--dark-brand:hover {
+  border-color: currentColor;
+  box-shadow: none;
+}
+
+.theme-dark .chip--dark-brand:hover .chip__icon {
+  fill: currentColor;
 }
 
 /* ── Mobile ── */
@@ -495,8 +561,7 @@ html[data-theme='dark'] body {
 
   .list li,
   .desc,
-  .links-list li,
-  .stack__row {
+  .links-list li {
     font-size: 0.88rem;
   }
 
@@ -512,8 +577,8 @@ html[data-theme='dark'] body {
     font-size: 0.82rem;
   }
 
-  .stack__row {
-    flex-direction: column;
+  .chip {
+    font-size: 0.78rem;
   }
 }
 
