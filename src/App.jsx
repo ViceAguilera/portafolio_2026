@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Mail, Sun, Moon, FileText, Download, X } from 'lucide-react';
+import { bio, projects, experience, stack } from './content';
 import './App.css';
 
 // Los fondos WebGL (three/ogl) pesan ~1 MB: se cargan aparte para que el texto pinte primero
@@ -82,35 +83,57 @@ function App() {
           </a>
         </div>
 
-        <p className="bio">
-          Hola, también conocido como &quot;Sirius&quot;, soy un apasionado desarrollador de software de 24 años con experiencia en Java, Python y JavaScript.
-          Me especializo en el desarrollo de aplicaciones web y sistemas de visión por computadora. Mi objetivo es crear soluciones innovadoras que mejoren la vida de las personas a través de la tecnología.
-          Actualmente trabajo en Gatblac y cuando no estoy programando, estoy creando playlists, haciendo reseñas o jugando videojuegos. Si necesitas contactarme, no dudes en enviarme un mensaje. ¡Gracias por visitar mi portafolio! :D
-        </p>
+        <p className="bio">{bio}</p>
 
         <section className="section">
-          <h2 className="section-title">Mis Proyectos:</h2>
+          <h2 className="section-title">Proyectos:</h2>
+          <div className="projects">
+            {projects.map((p) => (
+              <article key={p.name} className="project">
+                {p.image ? (
+                  <img src={p.image} alt={`Captura de ${p.name}`} className="project__media" loading="lazy" />
+                ) : (
+                  <div className="project__media project__media--pending">Captura o GIF (16:9)</div>
+                )}
+                <h3 className="project__name">{p.name}</h3>
+                <p className="desc">{p.summary}</p>
+                <p className={p.result ? 'project__result' : 'project__result pending'}>
+                  {p.result ?? 'Resultado: una cifra o logro concreto'}
+                </p>
+                <ul className="tags" aria-label="Tecnologías">
+                  {p.stack.map((t) => <li key={t}>{t}</li>)}
+                </ul>
+                <div className="project__links">
+                  <a href={p.repo} className="link">Código</a>
+                  {p.demo && <a href={p.demo} className="link">Demo</a>}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section">
+          <h2 className="section-title">Experiencia:</h2>
           <ul className="list">
-            <li>
-              <a href="https://github.com/ViceAguilera/detector-script-tesis" className="link">Sistema ANPR</a>
-              <span className="desc"> » sistema de reconocimiento de matrículas para control de entrada y salida vehicular.</span>
-            </li>
-            <li>
-              <a href="https://github.com/ViceAguilera/Train-YoloV11-Model" className="link">Entrenador de Modelos YoloV11</a>
-              <span className="desc"> » herramienta para entrenar modelos de detección de objetos con YoloV11.</span>
-            </li>
-            <li>
-              <a href="https://github.com/ViceAguilera/ReviewBot" className="link">ReviewBot</a>
-              <span className="desc"> » bot de Discord para generar reseñas de restaurantes con scraping.</span>
-            </li>
-            <li>
-              <a href="https://github.com/ViceAguilera/Old_web_blog" className="link">Blog Personal</a>
-              <span className="desc"> » blog personal con proyectos y reflexiones.</span>
-            </li>
-            <li>
-              <span className="desc"> En progreso muchos mas...</span>
-            </li>
+            {experience.map((e) => (
+              <li key={e.org}>
+                <strong>{e.role}</strong> · {e.org}
+                <span className="desc"> » {e.period}{e.note && ` · ${e.note}`}</span>
+              </li>
+            ))}
           </ul>
+        </section>
+
+        <section className="section">
+          <h2 className="section-title">Stack:</h2>
+          <dl className="stack">
+            {stack.map((s) => (
+              <div key={s.group} className="stack__row">
+                <dt>{s.group}</dt>
+                <dd className="desc">{s.items.join(' · ')}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         <section className="section">

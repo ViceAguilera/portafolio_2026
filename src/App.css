@@ -252,7 +252,7 @@ html[data-theme='dark'] body {
 }
 
 .section {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem;
 }
 
 .section-title {
@@ -333,6 +333,106 @@ html[data-theme='dark'] body {
   transition: color 0.2s ease;
 }
 
+/* ── Proyectos ── */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.theme-dark .project {
+  background: rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.theme-light .project {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.project__media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.project__media--pending {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed currentColor;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.project__name {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.project__result {
+  font-size: 0.95rem;
+}
+
+.project__links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tags li {
+  padding: 0.1rem 0.55rem;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
+
+/* Contenido por completar: visible a propósito para que no pase desapercibido */
+.pending {
+  font-style: italic;
+  opacity: 0.6;
+  border-left: 2px dashed currentColor;
+  padding-left: 0.5rem;
+}
+
+/* ── Stack ── */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stack__row {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.stack__row dt {
+  min-width: 8rem;
+  font-weight: 700;
+}
+
 /* ── Mobile ── */
 @media (max-width: 768px) {
   .content {
@@ -364,12 +464,25 @@ html[data-theme='dark'] body {
 
   .list li,
   .desc,
-  .links-list li {
+  .links-list li,
+  .stack__row {
     font-size: 0.88rem;
   }
 
   .link-meta {
     font-size: 0.82rem;
+  }
+
+  .project__name {
+    font-size: 0.95rem;
+  }
+
+  .project__result {
+    font-size: 0.82rem;
+  }
+
+  .stack__row {
+    flex-direction: column;
   }
 }
 
