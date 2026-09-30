@@ -26,6 +26,10 @@ export const ui = {
   capturePending: { es: 'Captura o GIF (16:9)', en: 'Screenshot or GIF (16:9)' },
   resultPending: { es: 'Resultado: una cifra o logro concreto', en: 'Result: a concrete metric or achievement' },
   screenshotOf: { es: 'Captura de', en: 'Screenshot of' },
+  carousel: { es: 'carrusel', en: 'carousel' },
+  prevImage: { es: 'Imagen anterior', en: 'Previous image' },
+  nextImage: { es: 'Imagen siguiente', en: 'Next image' },
+  goToImage: { es: 'Ir a la imagen', en: 'Go to image' },
   status: {
     live: { es: 'En producción', en: 'Live' },
     dev: { es: 'En desarrollo', en: 'In development' },
@@ -62,7 +66,7 @@ export const workProjects = [
       es: 'Reescrito a Rails modular con paridad 1:1 frente al MVP en NestJS.',
       en: 'Rewritten into modular Rails with 1:1 parity against the NestJS MVP.',
     },
-    image: null,
+    images: ['/img/proyectos/obrasuite-1.webp', '/img/proyectos/obrasuite-2.webp', '/img/proyectos/obrasuite-3.webp'],
     url: 'https://obrasuite.cl',
   },
   {
@@ -74,7 +78,7 @@ export const workProjects = [
     },
     stack: ['Ruby on Rails', 'React', 'TypeScript', 'PostgreSQL'],
     result: null,
-    image: null,
+    images: ['/img/proyectos/prioro-1.webp', '/img/proyectos/prioro-2.webp', '/img/proyectos/prioro-3.webp'],
     url: 'https://prioro.cl',
   },
   {
@@ -89,7 +93,7 @@ export const workProjects = [
       es: 'En producción, en marcha blanca con familias reales.',
       en: 'Live and piloting with real families.',
     },
-    image: null,
+    images: ['/img/proyectos/mochigo-1.webp', '/img/proyectos/mochigo-2.webp', '/img/proyectos/mochigo-3.webp'],
     url: 'https://mochigo.nexusone.cl',
   },
   {
@@ -104,7 +108,7 @@ export const workProjects = [
       es: 'En producción desde agosto de 2026 en un club de tiro con arco.',
       en: 'Live since August 2026 at an archery club.',
     },
-    image: null,
+    images: ['/img/proyectos/tirolab-1.webp', '/img/proyectos/tirolab-2.webp', '/img/proyectos/tirolab-3.webp'],
     url: null, // la instancia en producción es la del club; confirmar antes de enlazarla
   },
   {
@@ -116,7 +120,7 @@ export const workProjects = [
     },
     stack: ['Node.js / Express', 'SvelteKit', 'PostgreSQL', 'Redis'],
     result: null,
-    image: null,
+    images: [],
     url: null,
   },
 ];
@@ -130,7 +134,7 @@ export const projects = [
     },
     stack: ['Python', 'YOLO', 'OpenCV'],
     result: null, // ej. { es: '92 % de precisión en 1.200 imágenes reales', en: '...' }
-    image: null, // ej. '/img/proyectos/anpr.webp' (16:9)
+    images: [], // ej. ['/img/proyectos/anpr.webp'] (16:9); con 2+ se muestra como carrusel
     repo: 'https://github.com/ViceAguilera/detector-script-tesis',
     demo: null,
   },
@@ -142,7 +146,7 @@ export const projects = [
     },
     stack: ['Python', 'Ultralytics'],
     result: null,
-    image: null,
+    images: ['/img/proyectos/yolo-trainer.webp'],
     repo: 'https://github.com/ViceAguilera/Train-YoloV11-Model',
     demo: null,
   },
@@ -154,7 +158,7 @@ export const projects = [
     },
     stack: ['Python', 'Discord API'],
     result: null,
-    image: null,
+    images: ['/img/proyectos/reviewbot.webp'],
     repo: 'https://github.com/ViceAguilera/ReviewBot',
     demo: null,
   },

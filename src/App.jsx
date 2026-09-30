@@ -5,6 +5,7 @@ import { LangContext, initialLang, translate, useT } from './i18n';
 import { useMotion } from './motion';
 import TechChip from './TechChip';
 import LangToggle from './LangToggle';
+import Carousel from './Carousel';
 import { ExperienceTimeline } from './Experience';
 import './App.css';
 
@@ -26,11 +27,14 @@ function initialDark() {
 function ProjectCard({ p }) {
   const t = useT();
   const name = t(p.name);
+  const images = p.images ?? [];
   return (
     <article className="project">
-      {p.image ? (
-        <img src={p.image} alt={`${t(ui.screenshotOf)} ${name}`} className="project__media" loading="lazy" />
-      ) : (
+      {images.length > 1 && <Carousel images={images} name={name} />}
+      {images.length === 1 && (
+        <img src={images[0]} alt={`${t(ui.screenshotOf)} ${name}`} className="project__media" loading="lazy" />
+      )}
+      {images.length === 0 && (
         <div className="project__media project__media--pending">{t(ui.capturePending)}</div>
       )}
       <h3 className="project__name">
