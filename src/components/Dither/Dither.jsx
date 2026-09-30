@@ -266,11 +266,14 @@ export default function Dither({
   pixelSize = 2,
   disableAnimation = false,
   enableMouseInteraction = true,
-  mouseRadius = 1
+  mouseRadius = 1,
+  paused = false
 }) {
   return (
     <Canvas
       className="dither-container"
+      // 'demand' pinta al montar (compila shaders) y luego se detiene: la capa oculta queda lista sin gastar GPU
+      frameloop={paused ? 'demand' : 'always'}
       camera={{ position: [0, 0, 6] }}
       dpr={1}
       gl={{ antialias: true, preserveDrawingBuffer: true }}

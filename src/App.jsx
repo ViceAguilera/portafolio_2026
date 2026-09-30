@@ -15,6 +15,7 @@ const Iridescence = lazy(() => import('@components/Iridescence/Iridescence'));
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cvUrl = '/CV/Vicente_Aguilera_Arias_CV.pdf';
+const DITHER_COLOR = [0.2823529411764706, 0.1411764705882353, 1];
 
 function initialDark() {
   try {
@@ -84,11 +85,19 @@ function ProjectSection({ title, items, link }) {
 function App() {
   const [dark, setDark] = useState(initialDark);
   const [lang, setLang] = useState(initialLang);
+  const [layers, setLayers] = useState(() => ({ dark, light: !dark }));
   const cvDialog = useRef(null);
   const root = useRef(null);
   useMotion(root, cvDialog);
   // App monta el Provider, así que no puede usar useT()
   const t = (value) => translate(value, lang);
+
+  // Prepara en reposo el fondo del otro tema para que el primer cambio tampoco se trabe
+  useEffect(() => {
+    const idle = window.requestIdleCallback ?? ((cb) => setTimeout(cb, 1));
+    const timer = setTimeout(() => idle(() => setLayers({ dark: true, light: true })), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
@@ -112,28 +121,38 @@ function App() {
   return (
     <LangContext.Provider value={lang}>
       <div ref={root} className={dark ? 'theme-dark' : 'theme-light'}>
+        {/* Ambos fondos quedan montados tras usarse: cambiar de tema es solo un fundido, sin recompilar shaders */}
         <div className="background" aria-hidden="true">
-          <Suspense fallback={null}>
-            {dark ? (
-              <Dither
-                waveColor={[0.2823529411764706, 0.1411764705882353, 1]}
-                disableAnimation={reduceMotion}
-                enableMouseInteraction
-                mouseRadius={0.7}
-                colorNum={7}
-                pixelSize={4}
-                waveAmplitude={0.2}
-                waveFrequency={3}
-                waveSpeed={0.03}
-              />
-            ) : (
-              <Iridescence
-                speed={reduceMotion ? 0 : 1}
-                amplitude={0.1}
-                mouseReact={!reduceMotion}
-              />
-            )}
-          </Suspense>
+          {layers.dark && (
+            <div className={dark ? 'background__layer is-active' : 'background__layer'}>
+              <Suspense fallback={null}>
+                <Dither
+                  waveColor={DITHER_COLOR}
+                  disableAnimation={reduceMotion}
+                  enableMouseInteraction
+                  mouseRadius={0.7}
+                  colorNum={7}
+                  pixelSize={4}
+                  waveAmplitude={0.2}
+                  waveFrequency={3}
+                  waveSpeed={0.03}
+                  paused={!dark}
+                />
+              </Suspense>
+            </div>
+          )}
+          {layers.light && (
+            <div className={dark ? 'background__layer' : 'background__layer is-active'}>
+              <Suspense fallback={null}>
+                <Iridescence
+                  speed={reduceMotion ? 0 : 1}
+                  amplitude={0.1}
+                  mouseReact={!reduceMotion}
+                  paused={dark}
+                />
+              </Suspense>
+            </div>
+          )}
         </div>
   
         <div className="top-controls">
@@ -141,7 +160,7 @@ function App() {
           <button
             type="button"
             className="theme-toggle"
-            onClick={() => setDark(!dark)}
+            onClick={() => { setLayers({ dark: true, light: true }); setDark(!dark); }}
             aria-label={t(dark ? ui.toLight : ui.toDark)}
           >
             {dark ? <Sun size={20} /> : <Moon size={20} />}

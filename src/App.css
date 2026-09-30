@@ -17,6 +17,17 @@ html[data-theme='dark'] body {
   z-index: 0;
 }
 
+.background__layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.background__layer.is-active {
+  opacity: 1;
+}
+
 /* ── Idioma + tema ── */
 .top-controls {
   position: fixed;
