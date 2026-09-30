@@ -110,7 +110,7 @@ export const workProjects = [
       en: 'Live since August 2026 at an archery club.',
     },
     images: ['/img/proyectos/tirolab-landing.webp', '/img/proyectos/tirolab-1.webp', '/img/proyectos/tirolab-2.webp', '/img/proyectos/tirolab-3.webp'],
-    url: null, // la instancia en producción es la del club; confirmar antes de enlazarla
+    url: 'https://ragnarok.nexusone.cl',
   },
   {
     name: { es: 'Prioro Food', en: 'Prioro Food' },
