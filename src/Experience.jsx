@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { experience } from './content';
+import { experience, ui } from './content';
+import { useT } from './i18n';
 import TechChip from './TechChip';
 
 const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -14,6 +15,7 @@ function Highlights({ items }) {
 
 /* Línea de tiempo que se va llenando con el scroll */
 export function ExperienceTimeline() {
+  const t = useT();
   const list = useRef(null);
   const progress = useRef(null);
 
@@ -48,11 +50,11 @@ export function ExperienceTimeline() {
         {experience.map((e) => (
           <li key={e.org} className="tl__item">
             <span className={e.current ? 'tl__dot tl__dot--current' : 'tl__dot'} aria-hidden="true" />
-            <p className="tl__period">{e.period}{e.current && <span className="tl__badge">Actual</span>}</p>
+            <p className="tl__period">{t(e.period)}{e.current && <span className="tl__badge">{t(ui.current)}</span>}</p>
             <div className="tl__card">
-              <h3 className="xp-role">{e.role} <span className="xp-org">· {e.org}</span></h3>
-              <Highlights items={e.highlights} />
-              <ul className="chips">{e.tags.map((t) => <TechChip key={t} name={t} />)}</ul>
+              <h3 className="xp-role">{t(e.role)} <span className="xp-org">· {e.org}</span></h3>
+              <Highlights items={t(e.highlights)} />
+              <ul className="chips">{e.tags.map((tag) => <TechChip key={tag} name={tag} />)}</ul>
             </div>
           </li>
         ))}

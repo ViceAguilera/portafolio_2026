@@ -79,7 +79,7 @@ export function useMotion(rootRef, dialogRef) {
         .add('.cursor', { opacity: [0, 1], duration: 200 }, '-=300')
         .add('.cv-actions > *', { y: [16, 0], opacity: [0, 1], duration: 600, delay: stagger(80) }, '-=500')
         .add('.bio', { y: [12, 0], opacity: [0, 1], duration: 700 }, '-=450')
-        .add('.theme-toggle', { scale: [0.6, 1], opacity: [0, 1], duration: 500 }, '<<');
+        .add('.top-controls > *', { scale: [0.6, 1], opacity: [0, 1], duration: 500, delay: stagger(80) }, '<<');
 
       // Revelado por sección al hacer scroll
       root.querySelectorAll('.section').forEach((section) => {

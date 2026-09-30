@@ -74,6 +74,7 @@ Portafolio personal single-page con fondos animados WebGL (Dither / Iridescence)
 ## Caracteristicas
 
 - **Fondos animados WebGL**: Dither (modo oscuro) e Iridescence (modo claro), ambos con interaccion al mouse.
+- **Español / inglés**: un boton con la bandera del idioma destino; recuerda la eleccion. Los textos viven en `src/content.js` como `{ es, en }`.
 - **Toggle de tema**: modo claro/oscuro; respeta la preferencia del sistema y recuerda la eleccion.
 - **Visor de CV**: `<dialog>` nativo con el PDF embebido en escritorio; en movil abre el PDF directo. Boton de descarga aparte.
 - **Movimiento**: scroll suave con [Lenis](https://lenis.darkroom.engineering/) e intro, revelado por seccion y tilt de tarjetas con [anime.js](https://animejs.com/) (`src/motion.js`).
