@@ -110,7 +110,7 @@ export const workProjects = [
       en: 'Live since August 2026 at an archery club.',
     },
     images: ['/img/proyectos/tirolab-landing.webp', '/img/proyectos/tirolab-1.webp', '/img/proyectos/tirolab-2.webp', '/img/proyectos/tirolab-3.webp'],
-    url: null, // la instancia en producción es la del club; confirmar antes de enlazarla
+    url: 'https://ragnarok.nexusone.cl',
   },
   {
     name: { es: 'Prioro Food', en: 'Prioro Food' },
@@ -145,7 +145,7 @@ export const projects = [
       en: 'Tool to train object detection models with YOLOv11.',
     },
     stack: ['Python', 'Ultralytics'],
-    images: ['/img/proyectos/yolo-trainer.webp'],
+    images: ['/img/proyectos/yolo-trainer-epp.webp'],
     repo: 'https://github.com/ViceAguilera/Train-YoloV11-Model',
     demo: null,
   },
@@ -156,7 +156,7 @@ export const projects = [
       en: 'Discord bot to log and share restaurant reviews with slash commands; it finds the venue\'s website on its own.',
     },
     stack: ['Node.js', 'Discord.js', 'MongoDB'],
-    images: ['/img/proyectos/reviewbot.webp'],
+    images: ['/img/proyectos/reviewbot-chat.webp'],
     repo: 'https://github.com/ViceAguilera/ReviewBot',
     demo: null,
   },
