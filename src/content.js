@@ -66,19 +66,19 @@ export const workProjects = [
       es: 'Reescrito a Rails modular con paridad 1:1 frente al MVP en NestJS.',
       en: 'Rewritten into modular Rails with 1:1 parity against the NestJS MVP.',
     },
-    images: ['/img/proyectos/obrasuite-1.webp', '/img/proyectos/obrasuite-2.webp', '/img/proyectos/obrasuite-3.webp'],
+    images: ['/img/proyectos/obrasuite-landing.webp', '/img/proyectos/obrasuite-1.webp', '/img/proyectos/obrasuite-2.webp', '/img/proyectos/obrasuite-3.webp'],
     url: 'https://obrasuite.cl',
   },
   {
     name: { es: 'Prioro', en: 'Prioro' },
     status: 'live',
     summary: {
-      es: 'App web de productividad personal: capturar, ejecutar y revisar, con un módulo empresarial de actas de reunión.',
-      en: 'Personal productivity web app (capture, execute, review) with a business module for meeting minutes.',
+      es: 'Gestión de tareas multi-rol para equipos de proyecto: Gantt, plan del día y matriz de Eisenhower.',
+      en: 'Multi-role task management for project teams: Gantt, daily plan and Eisenhower matrix.',
     },
     stack: ['Ruby on Rails', 'React', 'TypeScript', 'PostgreSQL'],
     result: null,
-    images: ['/img/proyectos/prioro-1.webp', '/img/proyectos/prioro-2.webp', '/img/proyectos/prioro-3.webp'],
+    images: ['/img/proyectos/prioro-landing.webp', '/img/proyectos/prioro-1.webp', '/img/proyectos/prioro-2.webp', '/img/proyectos/prioro-3.webp'],
     url: 'https://prioro.cl',
   },
   {
@@ -93,7 +93,7 @@ export const workProjects = [
       es: 'En producción, en marcha blanca con familias reales.',
       en: 'Live and piloting with real families.',
     },
-    images: ['/img/proyectos/mochigo-1.webp', '/img/proyectos/mochigo-2.webp', '/img/proyectos/mochigo-3.webp'],
+    images: ['/img/proyectos/mochigo-landing.webp', '/img/proyectos/mochigo-1.webp', '/img/proyectos/mochigo-2.webp', '/img/proyectos/mochigo-3.webp'],
     url: 'https://mochigo.nexusone.cl',
   },
   {
@@ -108,7 +108,7 @@ export const workProjects = [
       es: 'En producción desde agosto de 2026 en un club de tiro con arco.',
       en: 'Live since August 2026 at an archery club.',
     },
-    images: ['/img/proyectos/tirolab-1.webp', '/img/proyectos/tirolab-2.webp', '/img/proyectos/tirolab-3.webp'],
+    images: ['/img/proyectos/tirolab-landing.webp', '/img/proyectos/tirolab-1.webp', '/img/proyectos/tirolab-2.webp', '/img/proyectos/tirolab-3.webp'],
     url: null, // la instancia en producción es la del club; confirmar antes de enlazarla
   },
   {
