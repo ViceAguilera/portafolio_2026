@@ -108,15 +108,16 @@ export default function Iridescence({ color = [1, 1, 1], speed = 1.0, amplitude 
       program.uniforms.uMouse.value[0] = x;
       program.uniforms.uMouse.value[1] = y;
     }
+    // En window: el contenido encima (tarjetas con pointer-events) taparía al contenedor
     if (mouseReact) {
-      ctn.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mousemove', handleMouseMove, { passive: true });
     }
 
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener('resize', resize);
       if (mouseReact) {
-        ctn.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mousemove', handleMouseMove);
       }
       ctn.removeChild(gl.canvas);
       gl.getExtension('WEBGL_lose_context')?.loseContext();
