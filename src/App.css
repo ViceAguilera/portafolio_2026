@@ -619,9 +619,23 @@ html[data-theme='dark'] body {
 .theme-light .status--dev { color: #b45309; }
 
 .section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   margin-left: 0.75rem;
   font-size: 0.85rem;
   font-weight: 600;
+  vertical-align: middle;
+}
+
+.section-link__logo {
+  height: 2.4rem;
+  width: auto;
+}
+
+.theme-light .section-link__logo--dark,
+.theme-dark .section-link__logo--light {
+  display: none;
 }
 
 .project__result {
