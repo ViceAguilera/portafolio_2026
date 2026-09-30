@@ -24,6 +24,7 @@ export const ui = {
   visit: { es: 'Visitar', en: 'Visit' },
   technologies: { es: 'Tecnologías', en: 'Technologies' },
   capturePending: { es: 'Captura o GIF (16:9)', en: 'Screenshot or GIF (16:9)' },
+  underConstruction: { es: 'En construcción', en: 'Under construction' },
   resultPending: { es: 'Resultado: una cifra o logro concreto', en: 'Result: a concrete metric or achievement' },
   screenshotOf: { es: 'Captura de', en: 'Screenshot of' },
   carousel: { es: 'carrusel', en: 'carousel' },

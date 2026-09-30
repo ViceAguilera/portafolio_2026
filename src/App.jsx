@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
-import { Mail, Sun, Moon, FileText, X } from 'lucide-react';
+import { Mail, Sun, Moon, FileText, X, Construction } from 'lucide-react';
 import { ui, bio, nexusOneUrl, workProjects, projects, stack } from './content';
 import { LangContext, initialLang, translate, useT } from './i18n';
 import { useMotion } from './motion';
@@ -34,7 +34,15 @@ function ProjectCard({ p }) {
       {images.length === 1 && (
         <img src={images[0]} alt={`${t(ui.screenshotOf)} ${name}`} className="project__media" loading="lazy" />
       )}
-      {images.length === 0 && (
+      {images.length === 0 && p.status === 'dev' && (
+        <div className="project__media construction">
+          <span className="construction__stripes" aria-hidden="true" />
+          <Construction size={40} className="construction__icon" aria-hidden="true" />
+          <p className="construction__title">{t(ui.underConstruction)}</p>
+          <span className="construction__stripes" aria-hidden="true" />
+        </div>
+      )}
+      {images.length === 0 && p.status !== 'dev' && (
         <div className="project__media project__media--pending">{t(ui.capturePending)}</div>
       )}
       <h3 className="project__name">
