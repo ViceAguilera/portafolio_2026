@@ -831,24 +831,23 @@ html[data-theme='dark'] body {
 }
 
 /* Al pasar el mouse el logo toma su color de marca */
+.chip {
+  --chip-brand: var(--brand);
+}
+
+/* Modo oscuro: variante clara de las marcas que no contrastan con el fondo */
+.theme-dark .chip {
+  --chip-brand: var(--brand-dark);
+}
+
 .chip:hover {
   translate: 0 -2px;
-  border-color: var(--brand, currentColor);
-  box-shadow: 0 6px 18px -6px var(--brand, transparent);
+  border-color: var(--chip-brand, currentColor);
+  box-shadow: 0 6px 18px -6px var(--chip-brand, transparent);
 }
 
 .chip:hover .chip__icon {
-  fill: var(--brand, currentColor);
-}
-
-/* Marcas casi negras: en modo oscuro el logo se queda con el color del texto */
-.theme-dark .chip--dark-brand:hover {
-  border-color: currentColor;
-  box-shadow: none;
-}
-
-.theme-dark .chip--dark-brand:hover .chip__icon {
-  fill: currentColor;
+  fill: var(--chip-brand, currentColor);
 }
 
 /* ── Mobile ── */
