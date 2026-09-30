@@ -392,8 +392,7 @@ html[data-theme='dark'] body {
 }
 
 /* Brillo que sigue al puntero; motion.js actualiza --mx / --my */
-.project::before,
-.stack__card::before {
+.project::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -405,8 +404,7 @@ html[data-theme='dark'] body {
   z-index: -1; /* backdrop-filter crea stacking context: queda sobre el fondo de la tarjeta, bajo el texto */
 }
 
-.project:hover::before,
-.stack__card:hover::before {
+.project:hover::before {
   opacity: 1;
 }
 
@@ -656,7 +654,6 @@ html[data-theme='dark'] body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
-  perspective: 1000px;
 }
 
 .stack__card {

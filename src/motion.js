@@ -93,7 +93,7 @@ export function useMotion(rootRef, dialogRef) {
       });
 
       if (ctx.matches.finePointer) {
-        root.querySelectorAll('.project, .stack__card').forEach((card) => cleanups.push(tiltCard(card)));
+        root.querySelectorAll('.project').forEach((card) => cleanups.push(tiltCard(card)));
       }
     });
 
