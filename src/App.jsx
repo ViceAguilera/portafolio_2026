@@ -16,6 +16,8 @@ const Iridescence = lazy(() => import('@components/Iridescence/Iridescence'));
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cvUrl = '/CV/Vicente_Aguilera_Arias_CV.pdf';
 const DITHER_COLOR = [0.2823529411764706, 0.1411764705882353, 1];
+// Logo de la landing de Nexus One: gris sobre fondo claro, blanco sobre oscuro
+const NEXUS_LOGO = { light: '/img/logos/nexusone-logo.svg', dark: '/img/logos/nexusone-logo-white.svg' };
 
 function initialDark() {
   try {
@@ -69,14 +71,24 @@ function ProjectCard({ p }) {
   );
 }
 
-function ProjectSection({ title, items, link }) {
+function ProjectSection({ title, items, link, logo }) {
   const t = useT();
   if (!items.length) return null;
   return (
     <section className="section">
       <h2 className="section-title">
         {t(title)}
-        {link && <a href={link} className="link section-link">{new URL(link).host} ↗</a>}
+        {link && (
+          <a href={link} className="link section-link">
+            {logo && (
+              <>
+                <img src={logo.light} alt="" className="section-link__logo section-link__logo--light" />
+                <img src={logo.dark} alt="" className="section-link__logo section-link__logo--dark" />
+              </>
+            )}
+            {new URL(link).host} ↗
+          </a>
+        )}
       </h2>
       <div className="projects">
         {items.map((p) => <ProjectCard key={p.name.es} p={p} />)}
@@ -181,7 +193,7 @@ function App() {
   
           <p className="bio">{t(bio)}</p>
   
-          <ProjectSection title={ui.workProjects} items={workProjects} link={nexusOneUrl} />
+          <ProjectSection title={ui.workProjects} items={workProjects} link={nexusOneUrl} logo={NEXUS_LOGO} />
           <ProjectSection title={ui.personalProjects} items={projects} />
   
           <section className="section">

@@ -78,7 +78,10 @@ export const workProjects = [
       en: 'Multi-role task management for project teams: Gantt, daily plan and Eisenhower matrix.',
     },
     stack: ['Ruby on Rails', 'React', 'TypeScript', 'PostgreSQL'],
-    result: null,
+    result: {
+      es: 'Reúne en un solo lugar todo lo necesario para manejar tus hábitos y tareas: más completo que Plane o Jira.',
+      en: 'Brings together everything you need to manage your habits and tasks in one place: more complete than Plane or Jira.',
+    },
     images: ['/img/proyectos/prioro-landing.webp', '/img/proyectos/prioro-1.webp', '/img/proyectos/prioro-2.webp', '/img/proyectos/prioro-3.webp'],
     url: 'https://prioro.cl',
   },
@@ -120,7 +123,10 @@ export const workProjects = [
       en: 'SaaS template for food businesses: orders, inventory, point of sale and a real-time kitchen.',
     },
     stack: ['Node.js / Express', 'SvelteKit', 'PostgreSQL', 'Redis'],
-    result: null,
+    result: {
+      es: 'En pruebas con un restaurante de Santiago.',
+      en: 'Being tested by a restaurant in Santiago.',
+    },
     images: [],
     url: null,
   },
