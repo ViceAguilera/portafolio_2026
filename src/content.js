@@ -39,15 +39,15 @@ export const ui = {
 
 export const bio = {
   es:
-    'Ingeniero en computación y desarrollador full-stack. Cofundador de Nexus One, donde dirijo cinco ' +
-    'productos y escribo el código de sus partes críticas: autorización multi-tenant, seguridad y CI. ' +
-    'Antes, más de dos años construyendo software para la banca en Gatblac. ' +
-    'Fuera del código: playlists, reseñas y videojuegos.',
+    'Hola, soy Vicente, también conocido como "Sirius". Soy ingeniero en computación y desarrollador ' +
+    'full-stack, y cofundé Nexus One, donde dirijo y programo cinco productos. Antes, pasé más de dos ' +
+    'años construyendo software para la banca chilena. Cuando no estoy programando, estoy armando ' +
+    'playlists, escribiendo reseñas o jugando videojuegos.',
   en:
-    'Computer engineer and full-stack developer. Co-founder of Nexus One, where I lead five products ' +
-    'and write the code for their critical parts: multi-tenant authorization, security and CI. ' +
-    'Before that, 2+ years building banking software at Gatblac. ' +
-    'Off the clock: playlists, reviews and video games.',
+    'Hi, I\'m Vicente, also known as "Sirius". I\'m a computer engineer and full-stack developer, and I ' +
+    'co-founded Nexus One, where I lead and build five products. Before that, I spent over two years ' +
+    'building software for the Chilean banking industry. When I\'m not coding, I\'m putting together ' +
+    'playlists, writing reviews or playing video games.',
 };
 
 export const nexusOneUrl = 'https://nexusone.cl';
