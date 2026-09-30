@@ -51,9 +51,12 @@ function ProjectCard({ p }) {
         {p.status && <span className={`status status--${p.status}`}>{t(ui.status[p.status])}</span>}
       </h3>
       <p className="desc">{t(p.summary)}</p>
-      <p className={p.result ? 'project__result' : 'project__result pending'}>
-        {p.result ? t(p.result) : t(ui.resultPending)}
-      </p>
+      {/* Sin campo `result` no hay línea; `result: null` la marca como pendiente */}
+      {'result' in p && (
+        <p className={p.result ? 'project__result' : 'project__result pending'}>
+          {p.result ? t(p.result) : t(ui.resultPending)}
+        </p>
+      )}
       <ul className="tags" aria-label={t(ui.technologies)}>
         {p.stack.map((s) => <li key={s}>{s}</li>)}
       </ul>

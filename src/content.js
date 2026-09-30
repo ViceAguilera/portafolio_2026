@@ -134,8 +134,7 @@ export const projects = [
       en: 'License plate recognition for vehicle entry and exit control.',
     },
     stack: ['Python', 'YOLO', 'OpenCV'],
-    result: null, // ej. { es: '92 % de precisión en 1.200 imágenes reales', en: '...' }
-    images: [], // ej. ['/img/proyectos/anpr.webp'] (16:9); con 2+ se muestra como carrusel
+    images: ['/img/proyectos/anpr.webp'],
     repo: 'https://github.com/ViceAguilera/detector-script-tesis',
     demo: null,
   },
@@ -146,7 +145,6 @@ export const projects = [
       en: 'Tool to train object detection models with YOLOv11.',
     },
     stack: ['Python', 'Ultralytics'],
-    result: null,
     images: ['/img/proyectos/yolo-trainer.webp'],
     repo: 'https://github.com/ViceAguilera/Train-YoloV11-Model',
     demo: null,
@@ -154,11 +152,10 @@ export const projects = [
   {
     name: { es: 'ReviewBot', en: 'ReviewBot' },
     summary: {
-      es: 'Bot de Discord que genera reseñas de restaurantes a partir de scraping.',
-      en: 'Discord bot that writes restaurant reviews from scraped data.',
+      es: 'Bot de Discord para registrar y compartir reseñas de restaurantes con comandos slash; busca solo el sitio del local.',
+      en: 'Discord bot to log and share restaurant reviews with slash commands; it finds the venue\'s website on its own.',
     },
-    stack: ['Python', 'Discord API'],
-    result: null,
+    stack: ['Node.js', 'Discord.js', 'MongoDB'],
     images: ['/img/proyectos/reviewbot.webp'],
     repo: 'https://github.com/ViceAguilera/ReviewBot',
     demo: null,
