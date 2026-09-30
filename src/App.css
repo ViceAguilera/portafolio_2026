@@ -98,6 +98,8 @@ html[data-theme='dark'] body {
   min-height: 100dvh;
   margin: 0 auto;
   padding: 2.5rem 4rem;
+  /* Aire sobre el nombre: antes lo daba el centrado vertical, que ya no aplica con la página larga */
+  padding-top: clamp(5rem, 16vh, 9rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
