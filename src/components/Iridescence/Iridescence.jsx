@@ -46,9 +46,14 @@ void main() {
 }
 `;
 
-export default function Iridescence({ color = [1, 1, 1], speed = 1.0, amplitude = 0.1, mouseReact = true, ...rest }) {
+// Constante fuera del componente: un array nuevo en cada render re-dispararía el efecto y recrearía el contexto WebGL
+const WHITE = [1, 1, 1];
+
+export default function Iridescence({ color = WHITE, speed = 1.0, amplitude = 0.1, mouseReact = true, paused = false, ...rest }) {
   const ctnDom = useRef(null);
   const mousePos = useRef({ x: 0.5, y: 0.5 });
+  const pausedRef = useRef(paused);
+  const resumeRef = useRef(null);
 
   useEffect(() => {
     if (!ctnDom.current) return;
@@ -90,13 +95,17 @@ export default function Iridescence({ color = [1, 1, 1], speed = 1.0, amplitude 
     });
 
     const mesh = new Mesh(gl, { geometry, program });
-    let animateId;
+    let animateId = null;
 
+    // En pausa pinta un último frame y suelta el rAF: la capa oculta no consume GPU
     function update(t) {
-      animateId = requestAnimationFrame(update);
       program.uniforms.uTime.value = t * 0.001;
       renderer.render({ scene: mesh });
+      animateId = pausedRef.current ? null : requestAnimationFrame(update);
     }
+    resumeRef.current = () => {
+      if (animateId === null) animateId = requestAnimationFrame(update);
+    };
     animateId = requestAnimationFrame(update);
     ctn.appendChild(gl.canvas);
 
@@ -108,20 +117,26 @@ export default function Iridescence({ color = [1, 1, 1], speed = 1.0, amplitude 
       program.uniforms.uMouse.value[0] = x;
       program.uniforms.uMouse.value[1] = y;
     }
+    // En window: el contenido encima (tarjetas con pointer-events) taparía al contenedor
     if (mouseReact) {
-      ctn.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mousemove', handleMouseMove, { passive: true });
     }
 
     return () => {
       cancelAnimationFrame(animateId);
       window.removeEventListener('resize', resize);
       if (mouseReact) {
-        ctn.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('mousemove', handleMouseMove);
       }
       ctn.removeChild(gl.canvas);
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
   }, [color, speed, amplitude, mouseReact]);
+
+  useEffect(() => {
+    pausedRef.current = paused;
+    if (!paused) resumeRef.current?.();
+  }, [paused]);
 
   return <div ref={ctnDom} className="iridescence-container" {...rest} />;
 }

@@ -74,9 +74,13 @@ Portafolio personal single-page con fondos animados WebGL (Dither / Iridescence)
 ## Caracteristicas
 
 - **Fondos animados WebGL**: Dither (modo oscuro) e Iridescence (modo claro), ambos con interaccion al mouse.
-- **Toggle de tema**: cambio entre modo claro y oscuro con transicion en colores y fondo.
-- **Visor de CV embebido**: modal con `<iframe>` que muestra el PDF sin salir del sitio.
-- **Tipografia personalizada**: fuente `Type Machine` cargada desde `public/font/`.
+- **Español / inglés**: un boton con la bandera del idioma destino; recuerda la eleccion. Los textos viven en `src/content.js` como `{ es, en }`.
+- **Toggle de tema**: modo claro/oscuro; respeta la preferencia del sistema y recuerda la eleccion.
+- **Visor de CV**: `<dialog>` nativo con el PDF embebido en escritorio; en movil abre el PDF directo. Boton de descarga aparte.
+- **Movimiento**: scroll suave con [Lenis](https://lenis.darkroom.engineering/) e intro, revelado por seccion y tilt de tarjetas con [anime.js](https://animejs.com/) (`src/motion.js`).
+- **Movimiento reducido**: con `prefers-reduced-motion` se desactivan Lenis, las animaciones de anime.js, los fondos WebGL y el cursor.
+- **Carga diferida**: los fondos WebGL se cargan en un chunk aparte para que el texto pinte primero.
+- **Tipografia personalizada**: fuente `Type Machine` (woff2 con subset latino) en `public/font/`.
 - **Hover multicolor**: animacion de gradiente arcoiris en links y boton de CV.
 - **UI responsive**: breakpoints para tablet (768px) y movil (480px).
 
@@ -84,34 +88,22 @@ Portafolio personal single-page con fondos animados WebGL (Dither / Iridescence)
 
 ```text
 Portafolio/
+├─ docker/nginx/           # Config nginx del contenedor y del VPS
 ├─ public/
 │  ├─ CV/
 │  │  └─ Vicente_Aguilera_Arias_CV.pdf
-│  └─ font/
-│     ├─ Minecraft.ttf
-│     └─ Type Machine.ttf
+│  ├─ font/
+│  │  └─ type-machine.woff2
+│  └─ img/
+│     └─ image.png         # Favicon
 ├─ src/
-│  ├─ assets/
-│  │  ├─ fonts/
-│  │  ├─ icons/
-│  │  └─ images/
 │  ├─ components/
 │  │  ├─ Dither/
 │  │  │  ├─ Dither.jsx
 │  │  │  └─ Dither.css
-│  │  ├─ Iridescence/
-│  │  │  ├─ Iridescence.jsx
-│  │  │  └─ Iridescence.css
-│  │  ├─ Header.jsx
-│  │  └─ Footer.jsx
-│  ├─ lib/
-│  │  └─ utils.js
-│  ├─ sections/
-│  │  ├─ Hero.jsx
-│  │  ├─ About.jsx
-│  │  ├─ Projects.jsx
-│  │  ├─ Skills.jsx
-│  │  └─ Contact.jsx
+│  │  └─ Iridescence/
+│  │     ├─ Iridescence.jsx
+│  │     └─ Iridescence.css
 │  ├─ styles/
 │  │  ├─ base/
 │  │  │  ├─ reset.css
@@ -124,7 +116,9 @@ Portafolio/
 │  ├─ App.jsx
 │  ├─ App.css
 │  └─ main.jsx
-├─ components.json
+├─ components.json         # Registry de React Bits para el CLI de shadcn
+├─ Dockerfile
+├─ docker-compose.yml
 ├─ index.html
 ├─ jsconfig.json
 ├─ vite.config.js
@@ -140,17 +134,17 @@ Generar build de produccion:
 npm run build
 ```
 
-Salida en `dist/` (sitio estatico). Puedes desplegar en cualquier hosting estatico (Vercel, Netlify, GitHub Pages, etc.).
+Salida en `dist/` (sitio estatico). En produccion se sirve con nginx dentro de Docker:
+
+```bash
+docker compose up -d --build
+```
 
 Para previsualizar el build localmente antes de desplegar:
 
 ```bash
 npm run preview
 ```
-
-## Licencia 📄
-
-Este proyecto está bajo la licencia _MIT_ - mira el archivo [LICENSE](LICENSE) para detalles
 
 ## Autor ✒️
 

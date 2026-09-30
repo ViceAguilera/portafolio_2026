@@ -25,3 +25,6 @@ Thumbs.db
 npm-debug.log*
 
 ssl
+
+# Claude Code
+.claude/
