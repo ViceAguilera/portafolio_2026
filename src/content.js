@@ -66,7 +66,7 @@ export const workProjects = [
       es: 'Reescrito a Rails modular con paridad 1:1 frente al MVP en NestJS.',
       en: 'Rewritten into modular Rails with 1:1 parity against the NestJS MVP.',
     },
-    images: ['/img/proyectos/obrasuite-landing.webp', '/img/proyectos/obrasuite-1.webp', '/img/proyectos/obrasuite-2.webp', '/img/proyectos/obrasuite-3.webp'],
+    images: ['/img/proyectos/obrasuite-landing.webp', '/img/proyectos/obrasuite-3d.webp', '/img/proyectos/obrasuite-1.webp', '/img/proyectos/obrasuite-2.webp'],
     url: 'https://obrasuite.cl',
   },
   {
