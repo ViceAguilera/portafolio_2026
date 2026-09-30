@@ -452,13 +452,7 @@ html[data-theme='dark'] body {
   padding-left: 0.5rem;
 }
 
-/* ── Experiencia (compartido por las opciones A y B) ── */
-.xp-option {
-  font-size: 0.8rem;
-  font-weight: 600;
-  opacity: 0.6;
-}
-
+/* ── Experiencia: línea de tiempo ── */
 .xp-role {
   font-size: 1.05rem;
   font-weight: 700;
@@ -492,10 +486,8 @@ html[data-theme='dark'] body {
 .theme-dark .xp-highlights { color: #c4c4cc; }
 .theme-light .xp-highlights { color: #33334a; }
 
-.theme-dark .tl,
-.theme-dark .xp-tabs { --accent: #93c5fd; --panel: rgba(0, 0, 0, 0.45); --panel-border: rgba(255, 255, 255, 0.12); }
-.theme-light .tl,
-.theme-light .xp-tabs { --accent: #1d4ed8; --panel: rgba(255, 255, 255, 0.5); --panel-border: rgba(0, 0, 0, 0.12); }
+.theme-dark .tl { --accent: #93c5fd; --panel: rgba(0, 0, 0, 0.45); --panel-border: rgba(255, 255, 255, 0.12); }
+.theme-light .tl { --accent: #1d4ed8; --panel: rgba(255, 255, 255, 0.5); --panel-border: rgba(0, 0, 0, 0.12); }
 
 .tl__period {
   display: flex;
@@ -579,8 +571,7 @@ html[data-theme='dark'] body {
   100% { box-shadow: 0 0 0 12px transparent; }
 }
 
-.tl__card,
-.xp-tabs__panel {
+.tl__card {
   padding: 1rem 1.1rem;
   border: 1px solid var(--panel-border);
   border-radius: 12px;
@@ -588,62 +579,6 @@ html[data-theme='dark'] body {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   pointer-events: auto;
-}
-
-/* ── Opción B: pestañas ── */
-.xp-tabs {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 1.25rem;
-  align-items: start;
-}
-
-.xp-tabs__list {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  border-left: 2px solid var(--panel-border);
-  pointer-events: auto;
-}
-
-.xp-tabs__tab {
-  height: 2.75rem; /* fija: el indicador se desplaza en múltiplos de esta altura */
-  padding-inline: 1rem;
-  white-space: nowrap;
-  text-align: left;
-  font: inherit;
-  font-size: 0.9rem;
-  background: none;
-  border: none;
-  color: inherit;
-  opacity: 0.65;
-  cursor: pointer;
-  transition: opacity 0.15s ease, background-color 0.15s ease;
-}
-
-.xp-tabs__tab:hover,
-.xp-tabs__tab[aria-selected='true'] {
-  opacity: 1;
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
-}
-
-.xp-tabs__tab[aria-selected='true'] {
-  color: var(--accent);
-}
-
-.xp-tabs__indicator {
-  position: absolute;
-  left: -2px;
-  top: 0;
-  width: 2px;
-  height: 2.75rem;
-  background: var(--accent);
-  transform: translateY(calc(var(--i) * 2.75rem));
-  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-.xp-tabs__panel {
-  min-height: 16rem;
 }
 
 /* ── Stack ── */
@@ -781,36 +716,6 @@ html[data-theme='dark'] body {
 
   .xp-role {
     font-size: 0.95rem;
-  }
-
-  /* Pestañas en fila con scroll horizontal */
-  .xp-tabs {
-    grid-template-columns: 1fr;
-  }
-
-  .xp-tabs__list {
-    flex-direction: row;
-    overflow-x: auto;
-    border-left: none;
-    border-bottom: 2px solid var(--panel-border);
-  }
-
-  .xp-tabs__tab {
-    flex-shrink: 0;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-  }
-
-  .xp-tabs__tab[aria-selected='true'] {
-    border-bottom-color: var(--accent);
-  }
-
-  .xp-tabs__indicator {
-    display: none;
-  }
-
-  .xp-tabs__panel {
-    min-height: 0;
   }
 }
 

@@ -23,7 +23,8 @@ function revealOnEnter(trigger, targets, from, { delay = 0, step = 70 } = {}) {
       ease: EASE,
       delay: stagger(step, { start: delay }),
     });
-  }, { threshold: 0.15 });
+  // Dispara cuando el borde superior cruza el 85 % de la pantalla, sin importar la altura de la sección
+  }, { rootMargin: '0px 0px -15% 0px' });
 
   observer.observe(trigger);
   return () => observer.disconnect();
@@ -87,7 +88,6 @@ export function useMotion(rootRef, dialogRef) {
         cleanups.push(revealOnEnter(section, '.tags li', { scale: 0.6 }, { delay: 450, step: 30 }));
         cleanups.push(revealOnEnter(section, '.list li, .links-list li', { x: -20 }, { delay: 100 }));
         cleanups.push(revealOnEnter(section, '.tl__item', { x: -28 }, { delay: 100, step: 120 }));
-        cleanups.push(revealOnEnter(section, '.xp-tabs', { y: 24 }, { delay: 100 }));
         cleanups.push(revealOnEnter(section, '.stack__card', { y: 32 }, { delay: 100, step: 80 }));
         cleanups.push(revealOnEnter(section, '.chip', { y: 10, scale: 0.8 }, { delay: 350, step: 18 }));
       });

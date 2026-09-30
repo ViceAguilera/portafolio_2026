@@ -3,7 +3,7 @@ import { Mail, Sun, Moon, FileText, Download, X } from 'lucide-react';
 import { bio, projects, stack } from './content';
 import { useMotion } from './motion';
 import TechChip from './TechChip';
-import { ExperienceTimeline, ExperienceTabs } from './Experience';
+import { ExperienceTimeline } from './Experience';
 import './App.css';
 
 // Los fondos WebGL (three/ogl) pesan ~1 MB: se cargan aparte para que el texto pinte primero
@@ -117,15 +117,9 @@ function App() {
           </div>
         </section>
 
-        {/* Propuestas de experiencia: quedarse con una y borrar la otra (y su CSS en App.css) */}
         <section className="section">
-          <h2 className="section-title">Experiencia: <span className="xp-option">opción A · línea de tiempo</span></h2>
+          <h2 className="section-title">Experiencia:</h2>
           <ExperienceTimeline />
-        </section>
-
-        <section className="section">
-          <h2 className="section-title">Experiencia: <span className="xp-option">opción B · pestañas</span></h2>
-          <ExperienceTabs />
         </section>
 
         <section className="section">
