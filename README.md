@@ -1,4 +1,4 @@
-# Portafolio — Vicente Aguilera
+# Portafolio de Vicente Aguilera
 
 Portafolio personal bilingüe (español / inglés) de una sola página, con fondos animados WebGL, modo claro y oscuro y visor de CV embebido.
 
@@ -6,13 +6,34 @@ Portafolio personal bilingüe (español / inglés) de una sola página, con fond
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=flat&logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-nginx-2496ED?style=flat&logo=docker&logoColor=white)
-![Licencia MIT](https://img.shields.io/badge/licencia-MIT-blue?style=flat)
+![Estado](https://img.shields.io/badge/estado-activo-brightgreen?style=flat)
+![Licencia](https://img.shields.io/badge/licencia-MIT-blue?style=flat)
+![Último commit](https://img.shields.io/github/last-commit/ViceAguilera/portafolio_2026?style=flat)
 
-Sitio en producción: [portfolio.iamsirius.cl](https://portfolio.iamsirius.cl)
+[Demo](https://portfolio.iamsirius.cl)
+
+<p align="center"><img src="docs/screenshot.png" alt="Captura del portafolio en producción" width="800"></p>
+
+## Tabla de contenidos
+
+- [Descripción](#descripción)
+- [Estado del proyecto](#estado-del-proyecto)
+- [Características](#características)
+- [Tecnologías](#tecnologías)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Licencia](#licencia)
+- [Autor](#autor)
 
 ## Descripción
 
 Sitio estático construido con React y Vite que presenta mi perfil, experiencia, proyectos y stack tecnológico. Los textos viven en `src/content.js` como pares `{ es, en }`, y en producción se sirve con nginx dentro de Docker.
+
+## Estado del proyecto
+
+**Activo.** Sitio en producción en [portfolio.iamsirius.cl](https://portfolio.iamsirius.cl), con mantenimiento y actualizaciones continuas.
 
 ## Características
 
