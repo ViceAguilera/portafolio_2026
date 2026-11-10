@@ -86,7 +86,7 @@ docker compose up -d --build                  # producción (nginx), puerto 9666
 docker compose --profile dev up app-dev       # desarrollo con hot reload, puerto 9667 por defecto
 ```
 
-El puerto se puede cambiar con `PORTFOLIO_PORT` y `PORTFOLIO_DEV_PORT`.
+El puerto se puede cambiar con `PORTFOLIO_PORT` y `PORTFOLIO_DEV_PORT`. Ambos escuchan solo en `127.0.0.1`: en el VPS, el nginx del host (`docker/nginx/portfolio.iamsirius.cl`) termina TLS y hace de proxy al contenedor. El nginx del contenedor agrega la CSP y la Permissions-Policy al HTML.
 
 ## Estructura del proyecto
 

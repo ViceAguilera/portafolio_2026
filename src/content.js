@@ -116,16 +116,16 @@ export const workProjects = [
     url: 'https://ragnarok.nexusone.cl',
   },
   {
-    name: { es: 'Prioro Food', en: 'Prioro Food' },
+    name: { es: 'Gastro One', en: 'Gastro One' },
     status: 'dev',
     summary: {
-      es: 'Plantilla SaaS para negocios de comida: pedidos, inventario, punto de venta y cocina en tiempo real.',
-      en: 'SaaS template for food businesses: orders, inventory, point of sale and a real-time kitchen.',
+      es: 'SaaS para restaurantes: mesas y comandas, punto de venta, caja, recetas que descuentan inventario, compras y cocina en tiempo real.',
+      en: 'SaaS for restaurants: tables and orders, point of sale, cash register, recipes that deduct inventory, purchasing and a real-time kitchen.',
     },
-    stack: ['Node.js / Express', 'SvelteKit', 'PostgreSQL', 'Redis'],
+    stack: ['Ruby on Rails', 'React', 'PostgreSQL', 'Valkey'],
     result: {
-      es: 'En pruebas con un restaurante de Santiago.',
-      en: 'Being tested by a restaurant in Santiago.',
+      es: 'Su primera versión ya opera en un restaurante; la nueva, multiempresa, ya integra salón, caja, impresión y tiempo real.',
+      en: 'Its first version already runs a restaurant; the new multi-tenant one already integrates dining room, register, printing and real time.',
     },
     images: [],
     url: null,
@@ -133,6 +133,17 @@ export const workProjects = [
 ];
 
 export const projects = [
+  {
+    name: { es: 'Cult Collection Cut', en: 'Cult Collection Cut' },
+    status: 'live',
+    summary: {
+      es: 'Sitio y agenda en línea de una barbería: libro de cortes, reserva con aceptación por correo y panel para subir fotos, videos y música.',
+      en: 'Website and online booking for a barbershop: haircut lookbook, bookings confirmed by email and a panel to upload photos, videos and music.',
+    },
+    stack: ['Astro', 'Tailwind CSS', 'SQLite', 'Docker'],
+    images: ['/img/proyectos/cultcollection-landing.webp', '/img/proyectos/cultcollection-libro.webp'],
+    url: 'https://cultcollectioncut.cl',
+  },
   {
     name: { es: 'Sistema ANPR', en: 'ANPR System' },
     summary: {
