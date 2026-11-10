@@ -139,7 +139,7 @@ function App() {
         {/* Ambos fondos quedan montados tras usarse: cambiar de tema es solo un fundido, sin recompilar shaders */}
         <div className="background" aria-hidden="true">
           {layers.dark && (
-            <div className={dark ? 'background__layer is-active' : 'background__layer'}>
+            <div className={dark ? 'background__layer background__layer--dark is-active' : 'background__layer background__layer--dark'}>
               <Suspense fallback={null}>
                 <Dither
                   waveColor={DITHER_COLOR}
@@ -157,7 +157,7 @@ function App() {
             </div>
           )}
           {layers.light && (
-            <div className={dark ? 'background__layer' : 'background__layer is-active'}>
+            <div className={dark ? 'background__layer background__layer--light' : 'background__layer background__layer--light is-active'}>
               <Suspense fallback={null}>
                 <Iridescence
                   speed={reduceMotion ? 0 : 1}
