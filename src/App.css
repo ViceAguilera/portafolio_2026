@@ -11,6 +11,13 @@ html[data-theme='dark'] body {
   background-color: #000;
 }
 
+/* Antes de que cargue React: el tema por defecto es oscuro salvo que el sistema pida claro (initialDark) */
+@media not (prefers-color-scheme: light) {
+  html:not([data-theme]) body {
+    background-color: #000;
+  }
+}
+
 .background {
   position: fixed;
   inset: 0;
@@ -26,6 +33,26 @@ html[data-theme='dark'] body {
 
 .background__layer.is-active {
   opacity: 1;
+}
+
+/* Fotograma fijo de cada fondo (~4 KB): se ve al instante mientras llega el chunk WebGL (~240 KB) */
+.background__layer--dark {
+  background: #000 url('/img/bg/dither.webp') center / cover no-repeat;
+  image-rendering: pixelated;
+}
+
+.background__layer--light {
+  background: #fafafa url('/img/bg/iridescence.webp') center / cover no-repeat;
+}
+
+/* El canvas entra con un fundido sobre el fotograma, sin salto */
+.background__layer canvas {
+  animation: background-in 0.8s ease-out both;
+  image-rendering: auto; /* no heredar el pixelated del fotograma */
+}
+
+@keyframes background-in {
+  from { opacity: 0; }
 }
 
 /* ── Idioma + tema ── */
