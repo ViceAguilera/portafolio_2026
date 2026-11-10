@@ -19,7 +19,7 @@ ENV NODE_ENV=production
 COPY . .
 RUN npm run build
 
-FROM nginx:1.27-alpine AS prod
+FROM nginx:1.30-alpine AS prod
 RUN mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled
 COPY docker/nginx/portfolio.conf /etc/nginx/sites-available/portfolio.conf
 RUN rm -f /etc/nginx/conf.d/default.conf \
